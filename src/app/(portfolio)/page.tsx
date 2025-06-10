@@ -1,4 +1,4 @@
-import ProjectCard from "../components/ProjectCard";
+import ProjectCard from "@/app/(portfolio)/components/ProjectCard";
 
 export default function HomePage() {
   const projects = [
@@ -6,7 +6,7 @@ export default function HomePage() {
       title: "Project 1",
       description: "Service site",
       image: "/placeholder-image.png",
-      href: "/projects/alpha",
+      href: '/serviceSite/home',
     },
     {
       title: "Project 2",

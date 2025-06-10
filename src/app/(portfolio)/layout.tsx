@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import NavBar from "../components/NavBar";
+import "@/app/globals.css";
+import NavBar from "@/app/(portfolio)/components/NavBar";
 /* eslint-disable @next/next/no-page-custom-font */
 
 export const metadata: Metadata = {
