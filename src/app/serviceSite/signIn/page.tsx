@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { 
-  Eye, EyeOff, Mail, Lock, User, Phone, Car, Calendar, CheckCircle, ArrowRight, Facebook, Chrome
+  Eye, EyeOff, Mail, Lock, User, Phone, Car, CheckCircle, ArrowRight, Facebook, Chrome
 } from 'lucide-react';
 
 interface FormData {
