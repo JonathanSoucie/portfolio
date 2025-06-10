@@ -41,8 +41,10 @@ interface Booking {
   };
 }
 
+type TabType = 'upcoming' | 'past' | 'all';
+
 const MyDashboard: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'upcoming' | 'past' | 'all'>('upcoming');
+  const [activeTab, setActiveTab] = useState<TabType>('upcoming');
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
 
@@ -215,12 +217,13 @@ const MyDashboard: React.FC = () => {
             {/* Tabs */}
             <div className="flex space-x-1 bg-gray-800 rounded-lg p-1">
               {[
-                { id: 'upcoming', label: 'Upcoming' },
-                { id: 'past', label: 'Past' },
-                { id: 'all', label: 'All' }
+                { id: 'upcoming' as const, label: 'Upcoming' },
+                { id: 'past' as const, label: 'Past' },
+                { id: 'all' as const, label: 'All' }
               ].map(tab => (
                 <button
                   key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                     activeTab === tab.id
                       ? 'bg-[#ff352a] text-white'
