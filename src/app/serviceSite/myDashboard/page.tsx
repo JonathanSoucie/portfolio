@@ -12,7 +12,6 @@ import {
   Edit3, 
   Trash2, 
   Plus,
-  Filter,
   Search,
   CheckCircle,
   AlertCircle,
