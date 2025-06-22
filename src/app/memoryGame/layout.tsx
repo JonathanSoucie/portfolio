@@ -67,17 +67,15 @@ const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
   );
 };
 
-interface LayoutProps {
-  children: ReactNode;
-}
 
-export default function MemoryGameLayout({ children }: LayoutProps) {
+
+export default function MemoryGameLayout({ children }: { children: ReactNode }) {
   return (
     <html lang = "en">
         <body className= "memory-game">
          <GameProvider>
              <div className="memory-game min-h-screen">
-             {children}
+             <main>{children}</main>
              </div>
          </GameProvider>
      </body>
