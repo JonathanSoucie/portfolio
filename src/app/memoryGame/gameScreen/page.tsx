@@ -29,17 +29,7 @@ const GameScreen: React.FC = () => {
     }
   }, []);
 
-  const parseUserInput = useCallback((input: string, system: NumberSystem): number => {
-    switch (system) {
-      case 'binary':
-        return parseInt(input, 2);
-      case 'hexadecimal':
-        return parseInt(input, 16);
-      case 'decimal':
-      default:
-        return parseInt(input, 10);
-    }
-  }, []);
+
 
   const generateSequence = useCallback(() => {
     const length = 5 + round; // Start with 3 (round 1), increase by 1 each round
