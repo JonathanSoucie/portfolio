@@ -12,7 +12,7 @@ export default function HomePage() {
       title: "Project 2",
       description: "Game",
       image: "/placeholder-image.png",
-      href: "/projects/beta",
+      href: "/memoryGame/home",
     },
     {
       title: "Project 3",
