@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { useGameContext, NumberSystem } from '../layout';
+import { useGameContext, NumberSystem } from '../context';
 
 type GamePhase = 'display' | 'input' | 'result';
 

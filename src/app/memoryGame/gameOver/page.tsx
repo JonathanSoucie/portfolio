@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useGameContext } from '../layout';
+import { useGameContext } from '../context';
 
 const GameOverPage: React.FC = () => {
   const router = useRouter();

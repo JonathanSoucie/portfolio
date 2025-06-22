@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useGameContext, Theme, NumberSystem } from '../layout';
+import { useGameContext, Theme, NumberSystem } from '../context';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
