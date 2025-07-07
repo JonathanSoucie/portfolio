@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { ArrowLeft, Plus, Minus, ShoppingCart, Truck, Shield, RotateCcw } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -502,7 +502,7 @@ const mockProducts: Record<number, Product> = {
   },
   
 };
-export default function ProductPage() {
+function ProductPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const productId = parseInt(searchParams.get('id') || '1');
@@ -684,5 +684,23 @@ export default function ProductPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h2 className="text-2xl mb-4">Loading...</h2>
+      </div>
+    </div>
+  );
+}
+
+export default function ProductPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <ProductPageContent />
+    </Suspense>
   );
 }
