@@ -512,7 +512,6 @@ export default function ProductPage() {
   const [selectedSize, setSelectedSize] = useState(0);
   const [selectedFrame, setSelectedFrame] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
 
   if (!product) {
     return (

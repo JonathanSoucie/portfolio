@@ -193,7 +193,7 @@ const ProductCard: React.FC<{ product: Product; onClick: () => void }> = ({ prod
       <div className="px-8 mb-8">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold">
-            Search Results for "{query}" ({results.length} found)
+            Search Results for &quot;{query}&quot; ({results.length} found)
           </h2>
           <button
             onClick={onClearSearch}
@@ -279,7 +279,7 @@ const ProductCard: React.FC<{ product: Product; onClick: () => void }> = ({ prod
           <div className="relative z-10 text-center px-8 max-w-4xl">
             <h1 className="mb-6 text-white drop-shadow-lg">Art Depot</h1>
             <p className="text-xl mb-8 text-white drop-shadow-md max-w-2xl mx-auto">
-              Museum-quality reproductions of the world's greatest artworks, crafted to elevate your home.
+              Museum-quality reproductions of the world&apos;s greatest artworks, crafted to elevate your home.
             </p>
             
             <div className="search-container">

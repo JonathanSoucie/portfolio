@@ -124,35 +124,90 @@ export default function CheckoutPage() {
     }
   };
 
+  const [surveyRating, setSurveyRating] = useState(0);
+  const [surveyFeedback, setSurveyFeedback] = useState('');
+  const [surveySubmitted, setSurveySubmitted] = useState(false);
+
   if (currentStep === 3) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
-        <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-          <div className="bg-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <h1 className="text-3xl font-bold mb-4">Order Confirmed!</h1>
-          <p className="text-lg text-gray-300 mb-6">
-            Thank you for your purchase. Your order has been successfully placed.
-          </p>
-          <div className="bg-gray-800 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-semibold mb-2">Order Details</h3>
-            <p className="text-gray-300">Order #: AD-{Date.now()}</p>
-            <p className="text-gray-300">Total: ${calculateTotal().toFixed(2)}</p>
-            <p className="text-gray-300">Estimated Delivery: 5-7 business days</p>
-          </div>
-          <button 
-            onClick={() => window.location.href = '/'}
-            className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-          >
-            Continue Shopping
-          </button>
+  
+  const handleSurveySubmit = () => {
+    // Here you would typically send the survey data to your backend
+    console.log('Survey submitted:', { rating: surveyRating, feedback: surveyFeedback });
+    setSurveySubmitted(true);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
+      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
+        <div className="bg-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h1 className="text-3xl font-bold mb-4">Order Confirmed!</h1>
+        <p className="text-lg text-gray-300 mb-6">
+          Thank you for your purchase. Your order has been successfully placed.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <h3 className="text-lg font-semibold mb-2">Order Details</h3>
+          <p className="text-gray-300">Order #: AD-{Date.now()}</p>
+          <p className="text-gray-300">Total: ${calculateTotal().toFixed(2)}</p>
+          <p className="text-gray-300">Estimated Delivery: 5-7 business days</p>
+        </div>
+
+        {/* Survey Section */}
+        <div className="bg-gray-800 rounded-lg p-6 mb-6 text-left">
+            
+          <h3 className="text-lg font-semibold mb-4 text-center">How was your shopping experience?</h3>
+          
+          {!surveySubmitted ? (
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Rate your experience (1-5 stars)</label>
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      onClick={() => setSurveyRating(star)}
+                      className={`text-2xl transition-colors ${
+                        star <= surveyRating ? 'text-yellow-400' : 'text-gray-600'
+                      }`}
+                    >
+                      ★
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Any feedback or suggestions?</label>
+                <textarea
+                  value={surveyFeedback}
+                  onChange={(e) => setSurveyFeedback(e.target.value)}
+                  placeholder="Tell us about your experience..."
+                  className="w-full bg-gray-700 text-white px-3 py-2 rounded-lg border border-gray-600 focus:border-white focus:outline-none resize-none"
+                  rows={3}
+                />
+              </div>
+              
+              <button
+                onClick={handleSurveySubmit}
+                className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              >
+                Submit Feedback
+              </button>
+            </div>
+          ) : (
+            <div className="text-center">
+              <div className="text-green-400 mb-2">✓ Thank you for your feedback!</div>
+              <p className="text-sm text-gray-400">Your input helps us improve our service.</p>
+            </div>
+          )}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
