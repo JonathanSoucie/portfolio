@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, CreditCard, Lock, Truck, MapPin, User, Mail, Phone, Plus, Minus, X } from 'lucide-react';
+import { ArrowLeft, CreditCard, Lock, Truck, Plus, Minus, X } from 'lucide-react';
 
 interface Product {
   id: number;
