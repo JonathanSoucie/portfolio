@@ -18,7 +18,7 @@ export default function HomePage() {
       title: "Project 3",
       description: "E-Commerce site",
       image: "/placeholder-image.png",
-      href: "/projects/gamma",
+      href: "/eCommerce/home",
     },
     {
       title: "Project 4",
