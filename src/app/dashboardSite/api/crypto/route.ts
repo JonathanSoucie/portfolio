@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 
 interface CoinData {
   id: string;
@@ -40,13 +40,10 @@ interface TransformedCoins {
   [key: string]: TransformedCoin;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
+export async function GET(request: NextRequest) {
   try {
-    const { currency = 'usd' } = req.query;
+    const { searchParams } = new URL(request.url);
+    const currency = searchParams.get('currency') || 'usd';
     
     // Fetch top 5 coins with 7-day sparkline data
     const coinsResponse = await fetch(
@@ -108,7 +105,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       activeCoins: globalData.data.active_cryptocurrencies?.toLocaleString() || '0'
     };
 
-    res.status(200).json({
+    return NextResponse.json({
       coins: transformedCoins,
       marketStats,
       lastUpdated: new Date().toISOString()
@@ -117,10 +114,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (error: unknown) {
     console.error('API Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-    res.status(500).json({ 
-      message: 'Failed to fetch cryptocurrency data',
-      error: errorMessage
-    });
+    return NextResponse.json(
+      { 
+        message: 'Failed to fetch cryptocurrency data',
+        error: errorMessage
+      },
+      { status: 500 }
+    );
   }
 }
 
