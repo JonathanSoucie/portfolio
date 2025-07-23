@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { TrendingUp, BarChart3, Globe, ChevronDown, Menu, X, RefreshCw } from 'lucide-react';
+import { TrendingUp, Globe, ChevronDown, Menu, X, RefreshCw } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 // Type definitions
