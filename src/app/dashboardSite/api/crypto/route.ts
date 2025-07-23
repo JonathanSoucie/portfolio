@@ -1,4 +1,3 @@
-// pages/api/crypto.ts (or app/api/crypto/route.ts for App Router)
 import { NextApiRequest, NextApiResponse } from 'next';
 
 interface CoinData {

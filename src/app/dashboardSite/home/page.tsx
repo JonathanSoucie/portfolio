@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, BarChart3, Globe, ChevronDown, Menu, X, RefreshCw } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
@@ -76,18 +78,29 @@ const useCryptoData = (currency: string = 'usd') => {
       setLoading(true);
       setError(null);
       
-      const response = await fetch(`/api/crypto?currency=${currency.toLowerCase()}`);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      // Try to fetch from API, but fall back to demo data if it fails
+      try {
+        const response = await fetch(`/api/dashboardSite/crypto?currency=${currency.toLowerCase()}`);
+        
+        if (response.ok) {
+          const result: ApiResponse = await response.json();
+          setData(result);
+          setLoading(false);
+          return;
+        }
+      } catch (apiError) {
+        console.log('API not available, using fallback data:', apiError);
       }
       
-      const result: ApiResponse = await response.json();
-      setData(result);
+      // Use fallback data if API fails
+      setTimeout(() => {
+        setData(null); // This will trigger the fallback data usage
+        setLoading(false);
+      }, 500);
+      
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
       console.error('Failed to fetch crypto data:', err);
-    } finally {
       setLoading(false);
     }
   };
@@ -342,15 +355,7 @@ const CryptoDashboard = () => {
             <a href="#" className="text-white font-medium border-b-2 border-orange-500 pb-1">
               {t.nav.dashboard}
             </a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">
-              {t.nav.portfolio}
-            </a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">
-              {t.nav.markets}
-            </a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">
-              {t.nav.news}
-            </a>
+           
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
@@ -601,4 +606,6 @@ const CryptoDashboard = () => {
   );
 };
 
-export default CryptoDashboard;
+export default function Page() {
+  return <CryptoDashboard />;
+}

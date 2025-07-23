@@ -24,7 +24,7 @@ export default function HomePage() {
       title: "Project 4",
       description: "Analytics",
       image: "/placeholder-image.png",
-      href: "/projects/delta",
+      href: "/dashboardSite/home",
     },
   ];
 
