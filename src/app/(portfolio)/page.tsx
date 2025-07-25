@@ -3,27 +3,27 @@ import ProjectCard from "@/app/(portfolio)/components/ProjectCard";
 export default function HomePage() {
   const projects = [
     {
-      title: "Project 1",
-      description: "Service site",
-      image: "/placeholder-image.png",
+      title: "Pit Crew",
+      description: "Track day concierge service site",
+      image: "/pitcrewCover.png",
       href: '/serviceSite/home',
     },
     {
-      title: "Project 2",
-      description: "Game",
-      image: "/placeholder-image.png",
+      title: "Memory Game",
+      description: "Test your memory with diffrent number systems",
+      image: "/memorygameCover.png",
       href: "/memoryGame/home",
     },
     {
-      title: "Project 3",
-      description: "E-Commerce site",
-      image: "/placeholder-image.png",
+      title: "Art Depot",
+      description: "Print on demand art E-Commerce site",
+      image: "/artdepotCover.png",
       href: "/eCommerce/home",
     },
     {
-      title: "Project 4",
-      description: "Analytics",
-      image: "/placeholder-image.png",
+      title: "CryptoDash",
+      description: "Analytics site for cryptocurrency prices",
+      image: "/cryptodashCover.png",
       href: "/dashboardSite/home",
     },
   ];

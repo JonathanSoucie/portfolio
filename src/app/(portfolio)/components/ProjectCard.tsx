@@ -17,7 +17,7 @@ export default function ProjectCard({ title, description, image, href }: Project
         <h3 className="text-2xl font-raleway font-semibold mb-2">{title}</h3>
         <p className="text-base text-white leading-relaxed font-merriweather">{description}</p>
       </div>
-      <div className="w-full md:w-[160px] flex-shrink-0">
+      <div className="w-full md:w-[200px] flex-shrink-0">
         <Image
           src={image}
           alt={`${title} image`}
